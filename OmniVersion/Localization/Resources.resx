@@ -27,4 +27,16 @@
     <data name="Stashes" xml:space="preserve">
         <value>Stashes</value>
     </data>
+    <data name="Information" xml:space="preserve">
+        <value>Information</value>
+    </data>
+    <data name="Author" xml:space="preserve">
+        <value>Author</value>
+    </data>
+    <data name="Committer" xml:space="preserve">
+        <value>Committer</value>
+    </data>
+    <data name="Files" xml:space="preserve">
+        <value>Files</value>
+    </data>
 </root>

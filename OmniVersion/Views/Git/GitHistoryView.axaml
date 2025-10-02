@@ -1,0 +1,63 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:l="using:OmniVersion.Localization"
+             xmlns:vmg="using:OmniVersion.ViewModels.Git"
+             xmlns:c="using:OmniVersion.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="OmniVersion.Views.Git.GitHistoryView"
+             x:DataType="vmg:GitHistoryViewModel">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="200"></RowDefinition>
+            <RowDefinition Height="2"></RowDefinition>
+            <RowDefinition Height="150" MinHeight="150"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0" ItemsSource="{Binding Repository.Commits, FallbackValue=''}" SelectedItem="{Binding SelectedCommit}" IsReadOnly="True" CanUserSortColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Message" Binding="{Binding MessageShort}" Width="*" CanUserResize="True" />
+                <DataGridTextColumn Header="Author" Binding="{Binding Author.Name}" Width="Auto" CanUserResize="True" />
+                <DataGridTextColumn Header="Date" Binding="{Binding Author.When.DateTime}" Width="Auto" CanUserResize="False" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <GridSplitter Grid.Row="1"></GridSplitter>
+
+        <TabControl Grid.Row="2">
+            <TabItem Header="{x:Static l:Resources.Information}">
+                <Grid ColumnDefinitions="Auto,*,Auto,*"
+                      RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                      IsVisible="{Binding SelectedCommit, Converter={x:Static c:NullableObjectConverters.IsNotNull}}">
+
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="{x:Static l:Resources.Author}" />
+                    <TextBlock Grid.Column="3" Grid.Row="0" Text="{x:Static l:Resources.Committer}" />
+
+                    <Image Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Width="50" Height="50" Source="../../Assets/logo.ico" />
+                    <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedCommit.Author.Name, FallbackValue=''}" />
+                    <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding SelectedCommit.Author.Email, FallbackValue=''}" />
+                    <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding SelectedCommit.Author.When.DateTime, FallbackValue=''}" />
+
+                    <Image Grid.Column="2" Grid.Row="1" Grid.RowSpan="3" Width="50" Height="50" Source="../../Assets/logo.ico" />
+                    <TextBlock Grid.Column="3" Grid.Row="1" Text="{Binding SelectedCommit.Committer.Name, FallbackValue=''}" />
+                    <TextBlock Grid.Column="3" Grid.Row="2" Text="{Binding SelectedCommit.Committer.Email, FallbackValue=''}" />
+                    <TextBlock Grid.Column="3" Grid.Row="3" Text="{Binding SelectedCommit.Committer.When.DateTime, FallbackValue=''}" />
+
+                    <TextBlock Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Text="{Binding SelectedCommit.Message, FallbackValue=''}" />
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="{x:Static l:Resources.Changes}">
+                <TreeDataGrid Source="{Binding FileTreeChanges, FallbackValue=''}" ShowColumnHeaders="False" />
+            </TabItem>
+
+            <TabItem Header="{x:Static l:Resources.Files}">
+                <TreeDataGrid Source="{Binding FileTree, FallbackValue=''}" ShowColumnHeaders="False" />
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+</UserControl>

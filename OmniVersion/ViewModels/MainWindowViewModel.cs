@@ -1,4 +1,4 @@
-﻿namespace UnnamedSourceControlClient.ViewModels;
+﻿namespace OmniVersion.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {

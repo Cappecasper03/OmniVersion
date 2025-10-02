@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace UnnamedSourceControlClient;
+namespace OmniVersion;
 
 sealed class Program
 {

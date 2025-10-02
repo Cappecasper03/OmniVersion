@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UnnamedSourceControlClient.Localization {
+namespace OmniVersion.Localization {
     using System;
     
     
@@ -38,7 +38,7 @@ namespace UnnamedSourceControlClient.Localization {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UnnamedSourceControlClient.Localization.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OmniVersion.Localization.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -58,7 +58,16 @@ namespace UnnamedSourceControlClient.Localization {
                 resourceCulture = value;
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Author.
+        /// </summary>
+        public static string Author {
+            get {
+                return ResourceManager.GetString("Author", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Changes.
         /// </summary>
@@ -67,7 +76,25 @@ namespace UnnamedSourceControlClient.Localization {
                 return ResourceManager.GetString("Changes", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Committer.
+        /// </summary>
+        public static string Committer {
+            get {
+                return ResourceManager.GetString("Committer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Files.
+        /// </summary>
+        public static string Files {
+            get {
+                return ResourceManager.GetString("Files", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to History.
         /// </summary>
@@ -76,7 +103,16 @@ namespace UnnamedSourceControlClient.Localization {
                 return ResourceManager.GetString("History", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        public static string Information {
+            get {
+                return ResourceManager.GetString("Information", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Stashes.
         /// </summary>

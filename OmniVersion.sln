@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnnamedSourceControlClient", "UnnamedSourceControlClient\UnnamedSourceControlClient.csproj", "{2D830A1E-EC93-4AB5-8825-6BD4C67DD0C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmniVersion", "OmniVersion\OmniVersion.csproj", "{2D830A1E-EC93-4AB5-8825-6BD4C67DD0C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

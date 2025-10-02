@@ -3,10 +3,10 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
-using UnnamedSourceControlClient.ViewModels;
-using UnnamedSourceControlClient.Views;
+using OmniVersion.ViewModels;
+using OmniVersion.Views;
 
-namespace UnnamedSourceControlClient;
+namespace OmniVersion;
 
 public partial class App : Application
 {

@@ -1,0 +1,39 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:l="using:OmniVersion.Localization"
+             xmlns:vmg="using:OmniVersion.ViewModels.Git"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="OmniVersion.Views.Git.GitRepositoryView"
+             x:DataType="vmg:GitRepositoryViewModel">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="125" MinWidth="125"></ColumnDefinition>
+            <ColumnDefinition Width="2"></ColumnDefinition>
+            <ColumnDefinition Width="*" MinWidth="200"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+            <Button Width="100" HorizontalAlignment="Center" Command="{Binding ShowHistoryCommand}">
+                <TextBlock Text="{x:Static l:Resources.History}" />
+            </Button>
+
+            <Button Width="100" HorizontalAlignment="Center" Command="{Binding ShowChangesCommand}">
+                <TextBlock Text="{x:Static l:Resources.Changes}" />
+            </Button>
+
+            <Button Width="100" HorizontalAlignment="Center" Command="{Binding ShowStashesCommand}">
+                <TextBlock Text="{x:Static l:Resources.Stashes}" />
+            </Button>
+        </StackPanel>
+
+        <GridSplitter Grid.Column="1" />
+
+        <UserControl Grid.Column="2" IsVisible="{Binding IsHistoryVisible}" Content="{Binding GitHistory}"></UserControl>
+        <UserControl Grid.Column="2" IsVisible="{Binding IsChangesVisible}" Content="{Binding GitHistory}"></UserControl>
+        <UserControl Grid.Column="2" IsVisible="{Binding IsStashesVisible}" Content="{Binding GitHistory}"></UserControl>
+    </Grid>
+
+</UserControl>
