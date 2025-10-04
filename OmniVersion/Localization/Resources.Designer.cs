@@ -114,11 +114,29 @@ namespace OmniVersion.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Staged.
+        /// </summary>
+        public static string Staged {
+            get {
+                return ResourceManager.GetString("Staged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stashes.
         /// </summary>
         public static string Stashes {
             get {
                 return ResourceManager.GetString("Stashes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unstaged.
+        /// </summary>
+        public static string Unstaged {
+            get {
+                return ResourceManager.GetString("Unstaged", resourceCulture);
             }
         }
     }

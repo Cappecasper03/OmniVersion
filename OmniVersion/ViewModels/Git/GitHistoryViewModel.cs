@@ -46,9 +46,9 @@ public partial class GitHistoryViewModel : ViewModelBase
 
             foreach (TreeEntryChanges change in changes)
             {
-                string[]                                          directoryParts  = change.Path.Split('/');
+                string[]                                   directoryParts  = change.Path.Split('/');
                 ObservableCollection<GitFileTreeViewModel> currentChildren = rootNodes;
-                string                                            currentPath     = string.Empty;
+                string                                     currentPath     = string.Empty;
 
                 foreach (string part in directoryParts)
                 {
@@ -78,7 +78,7 @@ public partial class GitHistoryViewModel : ViewModelBase
                 currentChildren.Add(fileNode);
             }
 
-            SortFileTree(rootNodes);
+            GitFileTreeViewModel.SortFileTree(rootNodes);
             var sortedNodes = new ObservableCollection<GitFileTreeViewModel>(rootNodes.OrderBy(x => x.SortOrder).ThenBy(x => x.Name));
             Dispatcher.UIThread.Post(() => { FileTreeChanges = new GitFileTree(sortedNodes); });
         });
@@ -92,7 +92,7 @@ public partial class GitHistoryViewModel : ViewModelBase
         Task.Run(() =>
         {
             ObservableCollection<GitFileTreeViewModel> rootNodes = BuildFileTreeRecursive(commit.Tree);
-            SortFileTree(rootNodes);
+            GitFileTreeViewModel.SortFileTree(rootNodes);
             var sortedNodes = new ObservableCollection<GitFileTreeViewModel>(rootNodes.OrderBy(x => x.SortOrder).ThenBy(x => x.Name));
             Dispatcher.UIThread.Post(() => { FileTree = new GitFileTree(sortedNodes); });
         });
@@ -132,14 +132,5 @@ public partial class GitHistoryViewModel : ViewModelBase
         }
 
         return nodes;
-    }
-
-    private static void SortFileTree(ObservableCollection<GitFileTreeViewModel> fileTree)
-    {
-        foreach (GitFileTreeViewModel node in fileTree)
-        {
-            node.Children = new ObservableCollection<GitFileTreeViewModel>(node.Children.OrderBy(x => x.SortOrder).ThenBy(x => x.Name));
-            SortFileTree(node.Children);
-        }
     }
 }

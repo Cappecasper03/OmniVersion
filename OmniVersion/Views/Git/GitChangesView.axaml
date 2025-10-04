@@ -1,0 +1,61 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:l="using:OmniVersion.Localization"
+             xmlns:vmg="using:OmniVersion.ViewModels.Git"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="OmniVersion.Views.Git.GitChangesView"
+             x:DataType="vmg:GitChangesViewModel">
+
+    <Grid ColumnDefinitions="200,2,*">
+        <Grid Grid.Column="0" RowDefinitions="*,2,*">
+            <Grid Grid.Row="0" RowDefinitions="Auto,*">
+                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto">
+                    <TextBlock Grid.Column="0" Text="{x:Static l:Resources.Unstaged}" />
+
+                    <TextBlock Grid.Column="1" Text="{Binding UnstagedCount}" />
+
+                    <TextBlock Grid.Column="2" Width="100" Background="Blue"></TextBlock>
+                </Grid>
+
+                <TreeDataGrid Grid.Row="1" Source="{Binding UnstagedFileTree, FallbackValue=''}" ShowColumnHeaders="False" />
+            </Grid>
+
+            <GridSplitter Grid.Row="1" />
+
+            <Grid Grid.Row="2" RowDefinitions="Auto,*">
+                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto">
+                    <TextBlock Grid.Column="0" Text="{x:Static l:Resources.Staged}" />
+
+                    <TextBlock Grid.Column="1" Text="{Binding StagedCount}" />
+
+                    <TextBlock Grid.Column="2" Width="100" Background="Blue"></TextBlock>
+                </Grid>
+
+                <TreeDataGrid Grid.Row="1" Source="{Binding StagedFileTree, FallbackValue=''}" ShowColumnHeaders="False" />
+            </Grid>
+        </Grid>
+
+        <GridSplitter Grid.Column="1" />
+
+        <Grid Grid.Column="2" RowDefinitions="*,2,100">
+            <TextBlock Grid.Row="0" Background="Green"></TextBlock>
+
+            <GridSplitter Grid.Row="1" />
+
+            <Grid Grid.Row="2" RowDefinitions="25,*,Auto">
+                <TextBox Grid.Row="0" Watermark="Subject" AcceptsReturn="False" />
+
+                <TextBox Grid.Row="1" Watermark="Description" AcceptsReturn="True" />
+
+
+                <Grid Grid.Row="2" ColumnDefinitions="*,Auto,Auto">
+                    <Button Grid.Column="1">Commit</Button>
+                    <Button Grid.Column="2">Commit and Push</Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</UserControl>

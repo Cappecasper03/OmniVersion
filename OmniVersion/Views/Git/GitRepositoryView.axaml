@@ -32,7 +32,7 @@
         <GridSplitter Grid.Column="1" />
 
         <UserControl Grid.Column="2" IsVisible="{Binding IsHistoryVisible}" Content="{Binding GitHistory}"></UserControl>
-        <UserControl Grid.Column="2" IsVisible="{Binding IsChangesVisible}" Content="{Binding GitHistory}"></UserControl>
+        <UserControl Grid.Column="2" IsVisible="{Binding IsChangesVisible}" Content="{Binding GitChanges}"></UserControl>
         <UserControl Grid.Column="2" IsVisible="{Binding IsStashesVisible}" Content="{Binding GitHistory}"></UserControl>
     </Grid>
 

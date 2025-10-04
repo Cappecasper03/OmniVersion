@@ -12,6 +12,9 @@ public partial class GitRepositoryViewModel : ViewModelBase
     private GitHistoryViewModel _gitHistory = new();
 
     [ObservableProperty]
+    private GitChangesViewModel _gitChanges = new();
+
+    [ObservableProperty]
     private bool _isHistoryVisible = true;
 
     [ObservableProperty]
@@ -22,7 +25,8 @@ public partial class GitRepositoryViewModel : ViewModelBase
 
     public GitRepositoryViewModel()
     {
-        _gitHistory.Repository = Repository;
+        GitHistory.Repository = Repository;
+        GitChanges.Repository = Repository;
     }
 
     [RelayCommand]
@@ -31,6 +35,8 @@ public partial class GitRepositoryViewModel : ViewModelBase
         IsHistoryVisible = true;
         IsChangesVisible = false;
         IsStashesVisible = false;
+
+        GitChanges.StopUpdating();
     }
 
     [RelayCommand]
@@ -39,6 +45,8 @@ public partial class GitRepositoryViewModel : ViewModelBase
         IsHistoryVisible = false;
         IsChangesVisible = true;
         IsStashesVisible = false;
+
+        GitChanges.StartUpdating();
     }
 
     [RelayCommand]
@@ -47,5 +55,7 @@ public partial class GitRepositoryViewModel : ViewModelBase
         IsHistoryVisible = false;
         IsChangesVisible = false;
         IsStashesVisible = true;
+
+        GitChanges.StopUpdating();
     }
 }
